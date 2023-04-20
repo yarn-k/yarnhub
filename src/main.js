@@ -1,20 +1,11 @@
 
-const Koa = require('koa')
-const KoaRouter = require('@koa/router')
-
-const app = new Koa()
-
-const userRouter = new KoaRouter({prefix: '/user'})
-
-userRouter.get('/list', (ctx, next) => {
-  ctx.body = `user list`
-})
-
-app.use(userRouter.routes())
-app.use(userRouter.allowedMethods)
+const { SERVER_PORT } = require('./config/server')
+// 1. 导入app
+const app = require('./app')
 
 
-app.listen(8000, () => {
+//  2. 将app启动
+app.listen(SERVER_PORT, () => {
   console.log('服务器启动成功')
 })
 
